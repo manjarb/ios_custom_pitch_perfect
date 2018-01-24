@@ -13,14 +13,14 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
 
     var audioRecorder: AVAudioRecorder!
     
-    @IBOutlet weak var ResumeButton: UIButton!
-    @IBOutlet weak var PauseButton: UIButton!
+    @IBOutlet weak var resumeButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PauseButton.isEnabled = false
-        PauseButton.alpha = 0
+        pauseButton.isEnabled = false
+        pauseButton.alpha = 0
         // Do any additional setup after loading the view.
     }
 
@@ -58,18 +58,17 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     
     func updateRecordAndStopButton(isRecording: Bool) {
         if isRecording {
-            recordingLabel.text = "Recording"
-            ResumeButton.isEnabled = false
-            PauseButton.isEnabled = true
-            PauseButton.alpha = 1
-            ResumeButton.alpha = 0
+            resumeButton.isEnabled = false
+            pauseButton.isEnabled = true
+            pauseButton.alpha = 1
+            resumeButton.alpha = 0
         } else {
-            recordingLabel.text = "Tab to Record"
-            ResumeButton.isEnabled = true
-            PauseButton.isEnabled = false
-            PauseButton.alpha = 0
-            ResumeButton.alpha = 1
+            resumeButton.isEnabled = true
+            pauseButton.isEnabled = false
+            pauseButton.alpha = 0
+            resumeButton.alpha = 1
         }
+        recordingLabel.text = isRecording ? "Recording" : "Tap to Record"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
